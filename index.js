@@ -43,9 +43,26 @@ async function checkYoutube() {
             `https://www.youtube.com/feeds/videos.xml?channel_id=${process.env.YOUTUBE_CHANNEL_ID}`
         );
 
-        const latestVideo = feed.items[0];
+      const latestVideo = feed.items[0];
 
-        if (!latestVideo) return;
+if (!latestVideo) return;
+
+// Primera vez: guardar sin anunciar
+if (!lastVideo) {
+
+    lastVideo = latestVideo.link;
+
+    fs.writeFileSync(
+        DATA_FILE,
+        JSON.stringify({
+            lastVideo
+        })
+    );
+
+    console.log("✅ Video inicial guardado");
+
+    return;
+}
 
         // Evitar duplicados
         if (latestVideo.link === lastVideo) {
