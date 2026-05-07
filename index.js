@@ -57,11 +57,11 @@ async function checkYoutube() {
         );
 
         const embed = new EmbedBuilder()
-            .setColor("Red")
-            .setTitle("🎥 Nuevo video subido")
+            .setColor("Purple")
+            .setTitle("🎥 Ferfi ha subido un nuevo video subido")
             .setDescription(latestVideo.title)
             .setURL(latestVideo.link)
-            .setImage(latestVideo.thumbnail)
+            .setImage(`https://img.youtube.com/vi/${latestVideo.link.split("v=")[1]}/maxresdefault.jpg`)
             .setTimestamp();
 
         await channel.send({
