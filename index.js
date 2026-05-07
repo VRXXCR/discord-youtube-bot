@@ -65,7 +65,7 @@ async function checkYoutube() {
             .setTimestamp();
 
         await channel.send({
-            content: `@everyone # 🚨 Nuevo video disponible\n${latestVideo.link}`,
+            content: `# 🚨 Nuevo video disponible @everyone\n${latestVideo.link}`,
             embeds: [embed]
         });
 
